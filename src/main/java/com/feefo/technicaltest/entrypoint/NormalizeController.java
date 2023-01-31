@@ -6,7 +6,6 @@ import com.feefo.technicaltest.entrypoint.data.converter.JobTitleConverter;
 import com.feefo.technicaltest.entrypoint.data.converter.impl.JobTitleConverterImpl;
 import com.feefo.technicaltest.entrypoint.data.input.JobTitleInput;
 import com.feefo.technicaltest.entrypoint.data.output.JobTitleOutput;
-import org.apache.lucene.queryparser.classic.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.io.IOException;
 
 @RestController
 @RequestMapping("api/normalize")
@@ -26,7 +23,7 @@ public class NormalizeController {
     private final JobTitleConverter converter = new JobTitleConverterImpl();
 
     @PostMapping()
-    public ResponseEntity<Object> normalizeJobTitle(@RequestBody JobTitleInput input) throws ParseException, IOException {
+    public ResponseEntity<Object> normalizeJobTitle(@RequestBody JobTitleInput input) {
         try {
             JobTitleOutput output = this.converter.toJobTitleOutput(
                     this.usecase.normalise(
