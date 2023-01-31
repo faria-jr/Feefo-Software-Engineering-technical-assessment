@@ -5,11 +5,9 @@ import com.feefo.technicaltest.application.usecase.data.converter.NormalizedJobT
 import com.feefo.technicaltest.application.usecase.data.converter.impl.NormalizedJobTitleBusinessConverterImpl;
 import com.feefo.technicaltest.application.usecase.data.input.NormalizedJobTitleBusinessInput;
 import com.feefo.technicaltest.application.usecase.data.output.NormalizedJobTitleBusinessOutput;
-import org.apache.lucene.queryparser.classic.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.util.*;
 
 @Component

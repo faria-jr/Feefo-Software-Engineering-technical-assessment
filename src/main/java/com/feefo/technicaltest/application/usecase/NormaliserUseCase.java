@@ -7,5 +7,5 @@ import org.apache.lucene.queryparser.classic.ParseException;
 import java.io.IOException;
 
 public interface NormaliserUseCase {
-    NormalizedJobTitleBusinessOutput normalise(NormalizedJobTitleBusinessInput input) throws ParseException, IOException;
+    NormalizedJobTitleBusinessOutput normalise(NormalizedJobTitleBusinessInput input);
 }
