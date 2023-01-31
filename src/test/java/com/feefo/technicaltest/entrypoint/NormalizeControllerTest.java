@@ -2,7 +2,6 @@ package com.feefo.technicaltest.entrypoint;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.feefo.technicaltest.application.usecase.NormaliserUseCase;
-import com.feefo.technicaltest.application.usecase.data.input.NormalizedJobTitleBusinessInput;
 import com.feefo.technicaltest.application.usecase.impl.NormaliserUseCaseImpl;
 import com.feefo.technicaltest.entrypoint.data.converter.JobTitleConverter;
 import com.feefo.technicaltest.entrypoint.data.converter.impl.JobTitleConverterImpl;
@@ -22,7 +21,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Collections;
-import java.util.HashMap;
 
 import static org.mockito.Mockito.spy;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -47,7 +45,6 @@ class NormalizeControllerTest {
 
     @Test
     void shouldNormalizeJobTitle() throws Exception {
-        HashMap<String,String> values = buildValues();
         JobTitleInput input = buildInput();
 
         mvc.perform(
@@ -75,23 +72,9 @@ class NormalizeControllerTest {
     }
 
 
-    private HashMap<String,String> buildValues(){
-        HashMap<String,String> values = new HashMap<>();
-        values.put("Java engineer", "Software engineer");
-        return values;
-    }
-
     private JobTitleInput buildInput(){
         JobTitleInput input = new JobTitleInput();
         input.setJobTitles(Collections.singletonList("Java engineer"));
         return input;
-    }
-
-    private NormalizedJobTitleBusinessInput buildBusinessInput(){
-        NormalizedJobTitleBusinessInput businessInput = NormalizedJobTitleBusinessInput.builder()
-                .jobTitles(buildInput().getJobTitles())
-                .build();
-
-        return businessInput;
     }
 }

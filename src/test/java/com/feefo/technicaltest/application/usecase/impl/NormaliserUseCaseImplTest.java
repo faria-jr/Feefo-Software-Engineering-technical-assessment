@@ -9,10 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.test.util.ReflectionTestUtils;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -27,7 +24,7 @@ class NormaliserUseCaseImplTest {
     private NormalizedJobTitleBusinessConverter converter = spy(new NormalizedJobTitleBusinessConverterImpl());
 
     @Test
-    void shoudNormaliseWithSuccess() throws IOException {
+    void shoudNormaliseWithSuccess() {
         NormalizedJobTitleBusinessOutput output = useCase.normalise(buildInput());
 
         assertTrue(output.getResults().size() > 0);
@@ -35,8 +32,7 @@ class NormaliserUseCaseImplTest {
     }
 
     @Test
-    void shoudNormaliseException() throws IOException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        ReflectionTestUtils.invokeMethod(useCase,"initUseCase");
+    void shoudNormaliseException() {
         NormalizedJobTitleBusinessInput input = buildInput();
         input.setJobTitles(null);
 
