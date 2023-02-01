@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Collections;
 import java.util.HashMap;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class JobTitleConverterImplTest {
@@ -27,8 +28,8 @@ class JobTitleConverterImplTest {
         JobTitleOutput output = converter.toJobTitleOutput(input);
 
         assertTrue(output.getResults().size() == 1);
-        assertTrue(output.getResults().get(0).getJobTitle() == "jobTitle");
-        assertTrue(output.getResults().get(0).getNormalized() == "normalized");
+        assertEquals(output.getResults().get(0).getJobTitle(), "jobTitle");
+        assertEquals(output.getResults().get(0).getNormalized(), "normalized");
     }
 
     @Test
@@ -43,6 +44,6 @@ class JobTitleConverterImplTest {
         NormalizedJobTitleBusinessInput output = converter.toBusinessInput(input);
 
         assertTrue(output.getJobTitles().size() == 1);
-        assertTrue(output.getJobTitles().get(0) == "jobTitle");
+        assertEquals(output.getJobTitles().get(0), "jobTitle");
     }
 }
