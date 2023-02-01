@@ -5,14 +5,12 @@ import com.feefo.technicaltest.application.usecase.data.converter.NormalizedJobT
 import com.feefo.technicaltest.application.usecase.data.converter.impl.NormalizedJobTitleBusinessConverterImpl;
 import com.feefo.technicaltest.application.usecase.data.input.NormalizedJobTitleBusinessInput;
 import com.feefo.technicaltest.application.usecase.data.output.NormalizedJobTitleBusinessOutput;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
 
 @Component
 public class NormaliserUseCaseImpl implements NormaliserUseCase {
-    @Autowired
     private final NormalizedJobTitleBusinessConverter converter = new NormalizedJobTitleBusinessConverterImpl();
 
     private static final List<String> NORMALIZED_TITLES = Arrays.asList(
